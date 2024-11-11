@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class playerScript : MonoBehaviour
 {
-     public AudioScript audioScript;
+    public AudioScript audioScript;
     private Vector2 movement;
     public Rigidbody2D rb;
     public float speed = 5f; 
@@ -11,8 +11,7 @@ public class playerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       audioScript.Play("pickWeapon");
-       audioScript.Play("fireWeapon");
+
     }
 
     // Update is called once per frame

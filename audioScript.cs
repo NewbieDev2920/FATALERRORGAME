@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AudioScript : MonoBehaviour
 {
-    public AudioSource audioSource;
+    private AudioSource audioSource;
     
     // Diccionario para almacenar los clips de sonido según el nombre del evento.
     private Dictionary<string, AudioClip> audioClips;
@@ -13,13 +13,16 @@ public class AudioScript : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioClips = new Dictionary<string, AudioClip>();
         
-        // Cargar clips de audio desde los archivos en la carpeta Resources
-        // (los archivos deben estar en una carpeta llamada "Resources").
-        audioClips["pickWeapon"] = Resources.Load<AudioClip>("Audio/pistol pick up");
-        audioClips["fireWeapon"] = Resources.Load<AudioClip>("Audio/pistol firing 1");
+        audioClips["pickPistol"] = Resources.Load<AudioClip>("Audio/pistol pick up");
+        audioClips["firePistol"] = Resources.Load<AudioClip>("Audio/pistol firing");
+        audioClips["reloadPistol"] = Resources.Load<AudioClip>("Audio/pistol reloading");
+        audioClips["pickShotgun"] = Resources.Load<AudioClip>("Audio/shotgun pick up 1");
+        audioClips["fireShotgun"] = Resources.Load<AudioClip>("Audio/shotgun firing");
+        audioClips["reloadShotgun"] = Resources.Load<AudioClip>("Audio/shotgun reloading");
+        audioClips["selectButton"] = Resources.Load<AudioClip>("Audio/button selection 2");
         audioClips["waveComplete"] = Resources.Load<AudioClip>("Audio/wave cleared 2");
     }
-
+    
     // Método para reproducir el audio en función del evento
     public void Play(string eventName)
     {
@@ -30,7 +33,7 @@ public class AudioScript : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"El evento de audio '{eventName}' no tiene un clip asignado.");
+            Debug.LogWarning($"The audio event '{eventName}' doesnt have a clip assigned.");
         }
     }
 }

@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class shootingScript : MonoBehaviour
+public class ShootingScript : MonoBehaviour
 {
     public float bulletSeparationShotgun;
+    public AudioScript audioScript;
     public float bulletAngleShotgun;
     private Weapon equippedWeapon = Weapon.Pistol;
     public Transform barrel;
@@ -11,7 +12,7 @@ public class shootingScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        audioScript.GetComponent<AudioScript>();
     }
 
     // Update is called once per frame
@@ -19,6 +20,8 @@ public class shootingScript : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1")){
             Shoot();
+            audioScript.Play("firePistol");
+            
         }
         if(Input.GetButtonDown("Fire2")){
             if(equippedWeapon == Weapon.Pistol){
